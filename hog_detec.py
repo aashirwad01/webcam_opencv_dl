@@ -7,7 +7,7 @@ from imutils.object_detection import non_max_suppression
 hog = cv2.HOGDescriptor()
 hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 
-cv2.startWindowThread()
+#cv2.startWindowThread()
 url = "http://192.168.43.6:8080" 
 # open webcam video stream
 cap = cv2.VideoCapture(url+"/video")
@@ -53,4 +53,4 @@ cap.release()
 #out.release()
 # finally, close the window
 cv2.destroyAllWindows()
-cv2.waitKey(1)
+#cv2.waitKey(1)
