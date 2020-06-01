@@ -1,7 +1,8 @@
 # import the necessary packages
+import imutils
 import numpy as np
 import cv2
- 
+from imutils.object_detection import non_max_suppression
 # initialize the HOG descriptor/person detector
 hog = cv2.HOGDescriptor()
 hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
@@ -32,8 +33,9 @@ while(True):
     boxes, weights = hog.detectMultiScale(frame, winStride=(8,8) )
 
     boxes = np.array([[x, y, x + w, y + h] for (x, y, w, h) in boxes])
-
-    for (xA, yA, xB, yB) in boxes:
+    pick  = non_max_suppression(boxes, probs=None, overlapThresh=0.65)
+	# draw the final bounding boxes
+    for (xA, yA, xB, yB) in pick:
         # display the detected boxes in the colour picture
         cv2.rectangle(frame, (xA, yA), (xB, yB),
                           (0, 255, 0), 2)
