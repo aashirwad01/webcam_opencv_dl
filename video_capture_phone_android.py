@@ -3,15 +3,15 @@ import cv2
 
 
 # define a video capture object
-
-vid = cv2.VideoCapture(0)
+url = "http://192.168.43.6:8080" 
+vid = cv2.VideoCapture(url+"/video")
 
 while(True): 
 	
 	# Capture the video frame 
 	# by frame 
 	ret, frame = vid.read() 
-
+	 # resize = cv2.resize(frame, (176, 144)) 
 	# Display the resulting frame 
 	cv2.imshow('frame', frame) 
 	
