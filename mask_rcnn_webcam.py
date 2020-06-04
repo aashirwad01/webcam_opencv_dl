@@ -88,7 +88,7 @@ while cap.isOpened():
     if not ret:
       break
     else:
-      if (count%8==0):
+      if (count%1==0):
         
         
         results = model.detect([image], verbose=1)
@@ -119,7 +119,7 @@ while cap.isOpened():
 
         #out.write(newimage)
         cv2.imshow('n',newimage)
-	
+        cv2.waitKey(1) & 0xFF == ord('q')
         #print(count)
     
     count=count+1
